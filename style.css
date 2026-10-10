@@ -1,0 +1,239 @@
+/* 1. Variabler: färgerna samlade på ett ställe.
+   Byt här så ändras färgen överallt på sidan! */
+:root {
+  --primary: #2d2d2d;
+  --accent: #d4a373;
+  --light: #faf6f1;
+  --text: #444;
+}
+
+/* 2. Grundinställningar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;    /* mjuk scroll när man klickar i menyn */
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);         /* så här använder man en variabel */
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+/* 3. Navigation */
+.site-header {
+  background-color: var(--primary);
+  position: sticky;           /* menyn följer med när man scrollar */
+  top: 0;
+  z-index: 10;                /* ligger ovanpå resten av innehållet */
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;  /* logga till vänster, länkar till höger */
+  align-items: center;
+}
+
+.logo {
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* 4. Hero */
+.hero {
+  background: linear-gradient(135deg, #3a3a3a, #6b5544);
+  min-height: 70vh;           /* 70 % av skärmens höjd */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: #ddd;
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+/* Knapp: en länk som är stylad som en knapp */
+.button {
+  display: inline-block;
+  background-color: var(--accent);
+  color: var(--primary);
+  padding: 14px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.05);     /* växer lite vid hover */
+}
+
+/* 5. Tjänster */
+.services {
+  background-color: var(--light);
+  padding: 64px 16px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+/* GRID: tre lika breda kolumner */
+.service-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 kolumner, 1fr = en lika stor del var */
+  gap: 24px;
+}
+
+.service-card {
+  background-color: white;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);  /* kortet lyfter lite */
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.service-card h3 {
+  margin-bottom: 8px;
+}
+
+.price {
+  margin-top: 16px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+/* 6. Om oss: flexbox med text och bild bredvid varandra */
+.about {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 16px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.about-text,
+.about-image {
+  flex: 1;                    /* båda tar lika mycket plats */
+}
+
+.about-text h2 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.about-image {
+  height: 280px;
+  background-color: var(--light);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+
+/* 7. Footer */
+.site-footer {
+  background-color: var(--primary);
+  color: #ccc;
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.site-footer h2 {
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.copy {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #888;
+}
+
+/* 8. RESPONSIVT: anpassning för mobil */
+@media (max-width: 768px) {
+  /* Menyn: logga ovanför länkarna */
+  .navbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  /* Tjänsterna: en kolumn i stället för tre */
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Om oss: text och bild under varandra */
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image {
+    width: 100%;
+  }
+}
